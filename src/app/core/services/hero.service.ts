@@ -4,14 +4,19 @@ import { Observable } from 'rxjs';
 import { Hero } from './contracts/hero';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
+
 })
 export class HeroService {
 
   constructor(private http: HttpClient) { }
 
-  getHeroes(): Observable<Hero> {
+  getHero(): Observable<Hero> {
     return this.http.get<Hero>('/api/heroes');
+  }
+
+  allHeroes(): Observable<String[]> {
+    return this.http.get<String[]>('/api/heroes');
   }
 
 }

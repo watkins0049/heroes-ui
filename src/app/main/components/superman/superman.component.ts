@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { HeroService } from '../../services/hero.service';
+import { HeroService } from '../../../core/services/hero.service';
 import { Observable, Subscriber, Subscription } from 'rxjs';
-import { Hero } from '../../services/contracts/hero';
+import { Hero } from '../../../core/services/contracts/hero';
 
 @Component({
   selector: 'app-superman',
@@ -19,7 +19,7 @@ export class SupermanComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.hero$ = this.heroService.getHeroes()
+    this.hero$ = this.heroService.getHero()
       .pipe(h => this.hero = h)
       .subscribe();
   }
