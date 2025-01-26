@@ -1,4 +1,6 @@
 <h1>{{title}}</h1>
 <nav>
-    <a routerLink="superman" routerLinkActive="active">Superman</a>
+    @for (hero of heroes; track $index) {
+        <a routerLink="{{hero}}" routerLinkActive="active">{{hero}}</a>
+    }
 </nav>
