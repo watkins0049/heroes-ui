@@ -1,6 +1,9 @@
 <h1>{{title}}</h1>
 <nav>
     @for (hero of heroes; track $index) {
-        <a routerLink="{{hero}}" routerLinkActive="active">{{hero}}</a>
+        <a routerLink="hero/{{hero}}" routerLinkActive="active">{{hero}}</a>
+    }
+    @empty {
+        <p>There are no heroes!</p>
     }
 </nav>

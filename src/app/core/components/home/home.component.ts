@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { HeroService } from '../../services/hero.service';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,13 +11,17 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   public title = 'Super Heroes of the DC Universe';
-  public heroes: String[];
+  public heroes: String[] = [];
 
   constructor(private heroService: HeroService) {
   }
 
   ngOnInit(): void {
-    this.heroService.allHeroes().subscribe(heroes => this.heroes = heroes);
+    this.heroService.allHeroes()
+      .pipe(
+        tap(heroes => this.heroes = heroes)
+      )
+      .subscribe();
   }
 
 }

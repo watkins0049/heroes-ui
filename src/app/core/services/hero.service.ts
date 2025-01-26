@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Hero } from './contracts/hero';
 
 @Injectable({
@@ -16,8 +16,7 @@ export class HeroService {
   }
 
   allHeroes(): Observable<String[]> {
-    return this.http.get<String[]>('/api/heroes')
-      .pipe(tap(console.log));
+    return this.http.get<String[]>('/api/heroes');
   }
 
 }
